@@ -28,8 +28,10 @@ jobs:
           curl -L https://tarantool.io/release/2/installer.sh | sudo bash
           sudo apt-get install -y tt
 
+      # Pinned to a version rocks.tarantool.org actually carries: its newest
+      # release there is 0.26.0, and asking for any other fails the job.
       - name: Install luacheck
-        run: tt rocks install luacheck 0.26.1
+        run: tt rocks install luacheck 0.26.0
 
       - name: Run luacheck
         run: .rocks/bin/luacheck .
