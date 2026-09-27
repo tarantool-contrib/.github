@@ -1,0 +1,66 @@
+name: Test
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  luacheck:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: tarantool/setup-tarantool@v4
+        with:
+          tarantool-version: '3.8'
+
+      - name: Setup tt
+        run: |
+          curl -L https://tarantool.io/release/2/installer.sh | sudo bash
+          sudo apt-get install -y tt
+
+      - name: Install luacheck
+        run: tt rocks install luacheck 0.26.1
+
+      - name: Run luacheck
+        run: .rocks/bin/luacheck .
+
+  luatest:
+    strategy:
+      fail-fast: false
+      matrix:
+        # Tarantool series this module supports; keep the oldest and the
+        # newest one at the very least.
+        tarantool: [ '2.11', '3.8' ]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: tarantool/setup-tarantool@v4
+        with:
+          tarantool-version: ${{ matrix.tarantool }}
+
+      - name: Setup tt
+        run: |
+          curl -L https://tarantool.io/release/2/installer.sh | sudo bash
+          sudo apt-get install -y tt
+
+      # Builds the module from the scm rockspec and installs it together with
+      # its dependencies into .rocks, the same way users install it.
+      - name: Install the module and its dependencies
+        run: tt rocks make
+
+      - name: Install luatest
+        run: tt rocks install luatest
+
+      - name: Run tests
+        run: .rocks/bin/luatest -v

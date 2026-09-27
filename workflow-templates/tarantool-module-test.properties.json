@@ -1,0 +1,7 @@
+{
+  "name": "Tarantool module: test",
+  "description": "Run luacheck and luatest over a matrix of Tarantool versions.",
+  "iconName": "octicon beaker",
+  "categories": ["Lua"],
+  "filePatterns": [".*-scm-1\\.rockspec$"]
+}
