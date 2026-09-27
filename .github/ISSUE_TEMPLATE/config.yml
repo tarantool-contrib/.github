@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Bug in Tarantool itself
+    url: https://github.com/tarantool/tarantool/issues
+    about: Problems that reproduce without this module belong to the Tarantool issue tracker.
+  - name: Questions about Tarantool
+    url: https://t.me/tarantool
+    about: Ask general Tarantool questions in the Tarantool community chat on Telegram.

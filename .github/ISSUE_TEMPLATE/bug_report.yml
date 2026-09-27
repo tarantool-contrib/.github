@@ -1,0 +1,54 @@
+name: Bug report
+description: Something in this module does not work as documented.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. If the problem reproduces without this module,
+        it belongs to [Tarantool itself](https://github.com/tarantool/tarantool/issues).
+        Security issues must not be reported here — see SECURITY.md.
+  - type: input
+    id: module-version
+    attributes:
+      label: Module version
+      description: Output of `tt rocks list <module>`, a release tag, or a commit.
+      placeholder: "1.2.3"
+    validations:
+      required: true
+  - type: input
+    id: tarantool-version
+    attributes:
+      label: Tarantool version
+      description: First line of `tarantool --version`.
+      placeholder: "Tarantool 3.8.1-0-g..."
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: "Ubuntu 24.04, macOS 15, ..."
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: Steps to reproduce
+      description: |
+        A minimal reproducer, ideally a Lua script that runs with
+        `tarantool script.lua`.
+      render: lua
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened, including error messages and logs.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
