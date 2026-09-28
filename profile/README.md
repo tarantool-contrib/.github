@@ -40,13 +40,13 @@ redirects from the old URL, and you stay its maintainer.
 Organization-wide rules are decided as RFCs in
 [tarantool-contrib/rfcs](https://github.com/tarantool-contrib/rfcs):
 
-- [governance](https://github.com/tarantool-contrib/rfcs/blob/main/text/0002-governance.md)
+- [governance](https://github.com/tarantool-contrib/rfcs/blob/master/text/0002-governance.md)
   — roles, joining, module statuses, changing maintainers;
-- [module requirements](https://github.com/tarantool-contrib/rfcs/blob/main/text/0003-module-requirements.md)
+- [module requirements](https://github.com/tarantool-contrib/rfcs/blob/master/text/0003-module-requirements.md)
   — what every module repository provides.
 
 ### Getting help
 
 - Questions about a specific module: its issue tracker.
 - Questions about Tarantool itself: Tarantool community chats on Telegram, [English](https://t.me/tarantool) and [Russian](https://t.me/tarantoolru).
-- Security issues: see [SECURITY.md](https://github.com/tarantool-contrib/.github/blob/main/SECURITY.md) — never file them publicly.
+- Security issues: see [SECURITY.md](https://github.com/tarantool-contrib/.github/blob/master/SECURITY.md) — never file them publicly.
